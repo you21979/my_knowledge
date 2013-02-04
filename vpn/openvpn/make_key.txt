@@ -3,12 +3,12 @@
 -----------------
 openssl req -nodes -new -x509 -keyout my-ca.key -out my-ca.crt -days 3650
 
-秘密鍵
+サーバー秘密鍵作成
 ------
 openssl req -nodes -new -keyout host.key -out host.csr
 
-証明書署名要求ファイル
----------------------
+クライアント秘密鍵作成（ユーザー作成）
+------------
 openssl req -nodes -new -keyout client.key -out client.csr
 
 署名
