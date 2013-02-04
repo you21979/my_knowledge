@@ -1,0 +1,28 @@
+
+認証局の公開鍵ペア
+-----------------
+openssl req -nodes -new -x509 -keyout my-ca.key -out my-ca.crt -days 3650
+
+秘密鍵
+------
+openssl req -nodes -new -keyout host.key -out host.csr
+
+証明書署名要求ファイル
+---------------------
+openssl req -nodes -new -keyout client.key -out client.csr
+
+署名
+----
+openssl ca -out host.crt -in host.csr -days 3650
+openssl ca -out client.crt -in client.csr -days 30
+
+Diffie-Hellman
+--------------
+openssl dhparam -out dh1024.pem 1024
+openssl dhparam -out dh2048.pem 2048
+
+tls-auth
+--------
+openvpn --genkey --secret ta.key
+
+
