@@ -1,0 +1,19 @@
+remote vpn.exsample.com 6001
+proto udp
+dev tap
+client
+resolv-retry infinite
+nobind
+comp-lzo
+verb 3
+persist-key
+persist-tun
+# key
+ca cacert.pem
+cert client.crt
+key client.key
+tls-auth ta.key 1
+# mtu
+tun-mtu 1500
+fragment 1400
+mssfix

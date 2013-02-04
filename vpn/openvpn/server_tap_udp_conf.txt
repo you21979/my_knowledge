@@ -1,0 +1,31 @@
+# interface and protocol
+port 6001
+proto udp
+dev tap
+comp-lzo
+keepalive 10 120
+verb 3
+mute 20
+persist-key
+persist-tun
+# key
+ca /etc/openvpn/cacert.pem
+cert /etc/openvpn/host.crt
+key /etc/openvpn/host.key
+dh /etc/openvpn/dh2048.pem
+tls-auth /etc/openvpn/ta.key 0
+# vpn network
+server 10.99.0.0 255.255.255.0
+# internal network
+push "route 172.16.0.0 255.240.0.0"
+# mtu
+tun-mtu 1500
+fragment 1400
+mssfix
+# status
+status openvpn-status.log
+ifconfig-pool-persist ipp.txt
+# security
+user nobody
+group nobody
+chroot /var/jail/openvpn
